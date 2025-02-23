@@ -7,14 +7,14 @@ import java.time.LocalDate;
 @Data
 @Entity
 public class Miembro {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @EmbeddedId
+    private MiembroID id;
+
     private String nombre;
     private String email;
     private LocalDate fechaInscripcion;
 
-    public Miembro(Long id, String nombre, String email, LocalDate fechaInscripcion) {
+    public Miembro(MiembroID id, String nombre, String email, LocalDate fechaInscripcion) {
         this.id = id;
         this.nombre = nombre;
         this.email = email;
@@ -22,14 +22,13 @@ public class Miembro {
     }
 
     public Miembro() {
-
     }
 
-    public Long getId() {
+    public MiembroID getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(MiembroID id) {
         this.id = id;
     }
 
