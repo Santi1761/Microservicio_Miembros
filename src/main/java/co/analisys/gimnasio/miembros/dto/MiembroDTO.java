@@ -1,20 +1,21 @@
 package co.analisys.gimnasio.miembros.dto;
 
 import co.analisys.gimnasio.miembros.model.MiembroID;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.*;
+
 import java.time.LocalDate;
 
+@Getter
+@Setter
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class MiembroDTO {
-    private MiembroID id;
+    private String id;
     private String nombre;
     private String email;
-    private LocalDate fechaInscripcion;
 
-    public MiembroDTO(MiembroID id, String nombre, String email, LocalDate fechaInscripcion) {
-        this.id = id;
-        this.nombre = nombre;
-        this.email = email;
-        this.fechaInscripcion = fechaInscripcion;
-    }
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private LocalDate fechaInscripcion;
 }

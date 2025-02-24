@@ -17,15 +17,14 @@ public class MiembroService implements IMiembroService {
 
     @Override
     public MiembroDTO registrar(MiembroDTO miembroDTO) {
-        Miembro miembro = new Miembro(
-                miembroDTO.getId(),
+        Miembro miembro = new Miembro(new MiembroID(miembroDTO.getId()),
                 miembroDTO.getNombre(),
                 miembroDTO.getEmail(),
                 miembroDTO.getFechaInscripcion()
         );
         miembro = miembroRepository.save(miembro);
         return new MiembroDTO(
-                miembro.getId(),
+                miembro.getId().getId(),
                 miembro.getNombre(),
                 miembro.getEmail(),
                 miembro.getFechaInscripcion()
@@ -35,8 +34,7 @@ public class MiembroService implements IMiembroService {
     @Override
     public List<MiembroDTO> obtenerMiembros() {
         return miembroRepository.findAll().stream()
-                .map(miembro -> new MiembroDTO(
-                        miembro.getId(),
+                .map(miembro -> new MiembroDTO(miembro.getId().getId(),
                         miembro.getNombre(),
                         miembro.getEmail(),
                         miembro.getFechaInscripcion()
