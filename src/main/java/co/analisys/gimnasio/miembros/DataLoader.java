@@ -17,9 +17,9 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        miembroRepository.save(new Miembro(new MiembroID(1L), "Santiago Escobar", "escobar@email.com", LocalDate.now()));
-        miembroRepository.save(new Miembro(new MiembroID(2L), "David Donneys", "donneys@email.com", LocalDate.now().minusDays(10)));
-        miembroRepository.save(new Miembro(new MiembroID(3L), "Santiago Arboleda", "arboleda@email.com", LocalDate.now().minusDays(30)));
+        miembroRepository.save(new Miembro(new MiembroID("1"), "Santiago Escobar", "escobar@email.com", LocalDate.now()));
+        miembroRepository.save(new Miembro(new MiembroID("2"), "David Donneys", "donneys@email.com", LocalDate.now().minusDays(10)));
+        miembroRepository.save(new Miembro(new MiembroID("3"), "Santiago Arboleda", "arboleda@email.com", LocalDate.now().minusDays(30)));
 
         System.out.println("Datos de prueba de Miembros cargados exitosamente.");
     }
