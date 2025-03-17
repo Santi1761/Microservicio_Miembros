@@ -68,4 +68,10 @@ public class RabbitMQConfig {
         rabbitTemplate.setMessageConverter(messageConverter());
         return rabbitTemplate;
     }
+
+    @Bean
+    public Binding bindingPagos(Queue pagosQueue, TopicExchange gimnasioExchange) {
+        return BindingBuilder.bind(pagosQueue).to(gimnasioExchange).with("pagos.procesar");
+    }
+
 }
