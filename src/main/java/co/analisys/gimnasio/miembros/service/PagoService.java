@@ -16,7 +16,7 @@ public class PagoService {
     }
 
     public void procesarPago(PagoDTO pagoDTO) {
-        System.out.println("💳 Enviando pago de " + pagoDTO.getMonto() + " para el miembro " + pagoDTO.getIdMiembro());
+        System.out.println("Enviando pago de " + pagoDTO.getMonto() + " para el miembro " + pagoDTO.getIdMiembro());
 
         rabbitTemplate.convertAndSend(
                 "gimnasio.exchange",
@@ -28,7 +28,7 @@ public class PagoService {
     @RabbitListener(queues = "pagos-queue")
     public void recibirPago(PagoDTO pagoDTO) {
         try {
-            System.out.println("✅ Procesando pago de: " + pagoDTO.getMonto() + " para " + pagoDTO.getIdMiembro());
+            System.out.println("Procesando pago de: " + pagoDTO.getMonto() + " para " + pagoDTO.getIdMiembro());
 
             // Simulación de fallo en pagos
             if (pagoDTO.getMonto() % 2 == 0) {

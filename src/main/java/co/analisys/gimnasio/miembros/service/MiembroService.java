@@ -79,6 +79,4 @@ public class MiembroService implements IMiembroService {
             throw new AmqpRejectAndDontRequeueException("Error en el pago, enviando a DLQ", e);
         }
     }
-
-
 }
