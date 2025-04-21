@@ -4,6 +4,7 @@ import co.analisys.gimnasio.miembros.dto.MiembroDTO;
 import co.analisys.gimnasio.miembros.service.IMiembroService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
