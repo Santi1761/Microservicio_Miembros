@@ -14,20 +14,16 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 @EnableMethodSecurity // Reemplaza @EnableGlobalMethodSecurity
 public class SecurityConfig {
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers(
-                                "/v3/api-docs/**",  // Documentación OpenAPI
-                                "/swagger-ui/**",    // Interfaz Swagger
-                                "/swagger-ui.html",  // Página principal Swagger
-                                "/circulacion/public/**"
-                        ).permitAll()
-                        .anyRequest().authenticated())
-                .oauth2ResourceServer(oauth2 -> oauth2
-                        .jwt(jwt ->
-                                jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())));
+                        .anyRequest().permitAll() // Permite TODAS las rutas sin autenticación
+                )
+                .csrf(csrf -> csrf.disable()) // Opcional: desactiva CSRF para facilitar pruebas POST/PUT
+                .oauth2ResourceServer(oauth2 -> oauth2.disable()); // Desactiva autenticación OAuth2
+
         return http.build();
     }
     private Converter<Jwt, ? extends AbstractAuthenticationToken> jwtAuthenticationConverter() {
