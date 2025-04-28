@@ -28,7 +28,7 @@ public class MiembroController {
     @Operation(summary = "Obtener todos los miembros",
             description = "Permite obtener la lista de todos los miembros registrados. " +
                     "Accesible solo para administradores.")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_TRAINER')")
     @GetMapping
     public List<MiembroDTO> obtenerTodosMiembros() {
         return miembroService.obtenerMiembros();
